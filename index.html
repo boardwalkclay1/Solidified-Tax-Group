@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solidified Tax Group</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: #ffffff;
+        color: #0a1a3c;
+        position: relative;
+    }
+
+    /* Background image faded */
+    .bg {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.15;
+        z-index: -1;
+    }
+
+    header {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        background: white;
+        border-bottom: 3px solid gold;
+    }
+
+    /* Logo slot */
+    #logo-slot {
+        width: 90px;
+        height: 90px;
+        background: #e6e6e6;
+        border: 2px dashed #0a1a3c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        color: #0a1a3c;
+        margin-right: 20px;
+    }
+
+    h1 {
+        font-size: 32px;
+        margin: 0;
+        color: #0a1a3c;
+    }
+
+    .section {
+        padding: 40px 20px;
+        max-width: 900px;
+        margin: auto;
+        background: rgba(255,255,255,0.85);
+        border-radius: 10px;
+        margin-top: 40px;
+    }
+
+    .services ul {
+        list-style: none;
+        padding: 0;
+        font-size: 20px;
+        line-height: 1.8;
+    }
+
+    .services li::before {
+        content: "• ";
+        color: gold;
+        font-weight: bold;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 15px 25px;
+        background: #0a1a3c;
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 18px;
+        margin-top: 20px;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: gold;
+        color: #0a1a3c;
+    }
+
+    footer {
+        text-align: center;
+        padding: 40px 20px;
+        background: #0a1a3c;
+        color: white;
+        margin-top: 60px;
+    }
+
+    footer img {
+        width: 160px;
+        height: auto;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .contact-links a {
+        display: block;
+        color: gold;
+        font-size: 18px;
+        margin: 8px 0;
+        text-decoration: none;
+    }
+
+    .copy-btn {
+        background: gold;
+        color: #0a1a3c;
+        padding: 8px 15px;
+        border-radius: 6px;
+        cursor: pointer;
+        border: none;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+function copyEmail() {
+    navigator.clipboard.writeText("solidifiedtaxgroup@gmail.com");
+    alert("Email copied to clipboard");
+}
+</script>
+
+</head>
+<body>
+
+<!-- Background image -->
+<div class="bg" style="background-image: url('YOUR_BACKGROUND_PHOTO.jpg');"></div>
+
+<header>
+    <div id="logo-slot">Add Logo</div>
+    <h1>Solidified Tax Group</h1>
+</header>
+
+<div class="section services">
+    <h2 style="color:#0a1a3c;">Our Tax Services</h2>
+    <ul>
+        <li>Individual Tax Returns</li>
+        <li>Self‑Employed & 1099 Filing</li>
+        <li>Small Business Tax Filing</li>
+        <li>Prior Year & Amended Returns</li>
+    </ul>
+
+    <a href="INTAKE_FORM_LINK_HERE" class="btn">Start Your Intake Form</a>
+</div>
+
+<div class="section">
+    <h2 style="color:#0a1a3c;">Contact Us</h2>
+
+    <div class="contact-links">
+        <a href="tel:4704303063">Call: 470‑430‑3063</a>
+        <a href="mailto:solidifiedtaxgroup@gmail.com">Email: solidifiedtaxgroup@gmail.com</a>
+    </div>
+
+    <button class="copy-btn" onclick="copyEmail()">Copy Email</button>
+</div>
+
+<footer>
+    <h3>Solidified Tax Group</h3>
+    <p>470‑430‑3063 • solidifiedtaxgroup@gmail.com</p>
+
+    <!-- Bottom photo -->
+    <img src="HER_PHOTO.jpg" alt="Tax Professional">
+</footer>
+
+</body>
+</html>
