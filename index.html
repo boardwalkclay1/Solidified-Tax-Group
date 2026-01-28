@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Client Intake – Solidified Tax Group</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solidified Tax Group</title>
 
 <style>
   body {
@@ -14,8 +14,7 @@
     position: relative;
   }
 
-  /* Background shadow image */
-  .bg-shadow {
+  .bg {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
@@ -26,8 +25,7 @@
     z-index: -1;
   }
 
-  /* Top Bar */
-  .topbar {
+  header {
     display: flex;
     align-items: center;
     padding: 20px;
@@ -35,8 +33,7 @@
     border-bottom: 3px solid gold;
   }
 
-  /* Logo */
-  .st-logo {
+  #logo-slot {
     width: 90px;
     height: 90px;
     background-image: url('st-logo.png');
@@ -46,66 +43,44 @@
     margin-right: 20px;
   }
 
-  nav a {
-    margin-left: 20px;
-    text-decoration: none;
+  h1 {
+    font-size: 32px;
+    margin: 0;
     color: #0a1a3c;
-    font-weight: 600;
   }
 
-  nav a:hover {
-    color: gold;
-  }
-
-  /* Page Container */
-  .page {
+  .section {
+    padding: 40px 20px;
     max-width: 900px;
     margin: auto;
-    padding: 30px 20px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 10px;
+    margin-top: 40px;
   }
 
-  .card {
-    background: rgba(255,255,255,0.92);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  .services ul {
+    list-style: none;
+    padding: 0;
+    font-size: 20px;
+    line-height: 1.8;
   }
 
-  h2, h3 {
-    color: #0a1a3c;
-    border-left: 6px solid gold;
-    padding-left: 10px;
-  }
-
-  h4 {
-    margin-top: 20px;
-    color: #0a1a3c;
-  }
-
-  input, select {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0 18px 0;
-    border: 1px solid #c7c7c7;
-    border-radius: 6px;
-    font-size: 16px;
-  }
-
-  label {
-    font-weight: 600;
-    display: block;
-    margin-top: 10px;
+  .services li::before {
+    content: "• ";
+    color: gold;
+    font-weight: bold;
   }
 
   .btn {
+    display: inline-block;
+    padding: 15px 25px;
     background: #0a1a3c;
     color: white;
-    padding: 15px 25px;
     border-radius: 8px;
-    border: none;
+    text-decoration: none;
     font-size: 18px;
-    cursor: pointer;
     margin-top: 20px;
+    transition: 0.3s;
   }
 
   .btn:hover {
@@ -116,252 +91,89 @@
   footer {
     text-align: center;
     padding: 40px 20px;
-    margin-top: 60px;
     background: #0a1a3c;
     color: white;
+    margin-top: 60px;
   }
 
   footer img {
-    width: 180px;
-    border-radius: 12px;
+    width: 160px;
+    height: auto;
+    border-radius: 10px;
     margin-top: 20px;
   }
-</style>
-</head>
 
+  .contact-links a {
+    display: block;
+    color: gold;
+    font-size: 18px;
+    margin: 8px 0;
+    text-decoration: none;
+  }
+
+  .copy-btn {
+    background: gold;
+    color: #0a1a3c;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    margin-top: 10px;
+  }
+</style>
+
+<script>
+function copyEmail() {
+  navigator.clipboard.writeText("solidifiedtaxgroup@gmail.com");
+  alert("Email copied to clipboard");
+}
+</script>
+
+</head>
 <body>
 
-<div class="bg-shadow"></div>
+<div class="bg"></div>
 
-<header class="topbar">
-  <div class="st-logo"></div>
-
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="client.html">Client Portal</a>
-    <a href="client-intake.html">Client Intake</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+<header>
+  <div id="logo-slot"></div>
+  <h1>Solidified Tax Group</h1>
 </header>
 
-<main class="page">
-  <section class="card">
-    <h2>Client Intake Form</h2>
-    <p>
-      WELCOME AND THANK YOU FOR CHOOSING SOLIDIFIED TAX GROUP.  
-      PLEASE FILL OUT THIS FORM SO WE CAN BETTER ASSIST YOU WITH FILING YOUR TAXES.
-    </p>
+<div class="section services">
+  <h2 style="color:#0a1a3c;">Our Tax Services</h2>
+  <ul>
+    <li>Individual Tax Returns</li>
+    <li>Self‑Employed & 1099 Filing</li>
+    <li>Small Business Tax Filing</li>
+    <li>Prior Year & Amended Returns</li>
+  </ul>
 
-    <!-- SERVICES TITLE -->
-    <h3>📌 Services We Provide</h3>
-    <ul style="font-size:18px; line-height:1.7;">
-      <li>Individual Tax Returns</li>
-      <li>Self‑Employed & 1099 Filing</li>
-      <li>Small Business Tax Filing</li>
-      <li>Prior Year & Amended Returns</li>
-    </ul>
+  <h3 style="margin-top:30px;">📄 How to Get Started</h3>
+  <p style="font-size:18px; line-height:1.6;">
+    Tap the button below to open the Client Intake Form.  
+    Download it to your phone, fill it out, and email it to:  
+    <strong>solidifiedtaxgroup@gmail.com</strong>
+  </p>
 
-    <!-- FULL INTAKE FORM -->
-    <form id="intakeForm" method="POST" action="/api/client/intake" enctype="multipart/form-data">
+  <a href="client-intake.html" class="btn">Open Client Intake Form</a>
+</div>
 
-      <!-- TAXPAYER INFO -->
-      <h3>👤 Taxpayer Information</h3>
-      <input name="taxpayerFirstName" placeholder="First Name" required />
-      <input name="taxpayerLastName" placeholder="Last Name" required />
+<div class="section">
+  <h2 style="color:#0a1a3c;">Contact Us</h2>
 
-      <h4>Address</h4>
-      <input name="addressStreet1" placeholder="Street Address" required />
-      <input name="addressStreet2" placeholder="Street Address Line 2" />
-      <input name="addressCity" placeholder="City" required />
-      <input name="addressState" placeholder="State / Province" required />
-      <input name="addressZip" placeholder="Postal / Zip Code" required />
+  <div class="contact-links">
+    <a href="tel:4704303063">Call: 470‑430‑3063</a>
+    <a href="mailto:solidifiedtaxgroup@gmail.com">Email: solidifiedtaxgroup@gmail.com</a>
+  </div>
 
-      <input name="phone" placeholder="Phone Number" required />
-      <input name="email" type="email" placeholder="Email" required />
+  <button class="copy-btn" onclick="copyEmail()">Copy Email</button>
+</div>
 
-      <label>Date Of Birth</label>
-      <input name="dob" type="date" required />
+<footer>
+  <h3>Solidified Tax Group</h3>
+  <p>470‑430‑3063 • solidifiedtaxgroup@gmail.com</p>
+  <img src="bottom-photo.jpg" alt="Tax Professional">
+</footer>
 
-      <input name="ssn" placeholder="Social Security Number" required />
-
-      <label>What year are you requesting to file?</label>
-      <input name="taxYear" placeholder="Tax Year" required />
-
-      <!-- YES / NO QUESTIONS -->
-      <h3>📄 Income & Filing Details</h3>
-
-      <label>Did you receive a W-2?</label>
-      <label><input type="radio" name="w2Received" value="Yes" required /> Yes</label>
-      <label><input type="radio" name="w2Received" value="No" /> No</label>
-
-      <label>Did you or your spouse receive Unemployment Compensation? (1099-G)</label>
-      <label><input type="radio" name="unemployment" value="Yes" required /> Yes</label>
-      <label><input type="radio" name="unemployment" value="No" /> No</label>
-
-      <label>Did you or your spouse collect Social Security or Retirement Income?</label>
-      <label><input type="radio" name="ssOrRetirement" value="Yes" required /> Yes</label>
-      <label><input type="radio" name="ssOrRetirement" value="No" /> No</label>
-
-      <label>Did you or your spouse take an early withdrawal from retirement? (1099-R)</label>
-      <label><input type="radio" name="earlyRetirementWithdrawal" value="Yes" required /> Yes</label>
-      <label><input type="radio" name="earlyRetirementWithdrawal" value="No" /> No</label>
-
-      <label>Did you pay more than half of the expenses at your residence?</label>
-      <label><input type="radio" name="paidHalfExpenses" value="Yes" required /> Yes</label>
-      <label><input type="radio" name="paidHalfExpenses" value="No" /> No</label>
-
-      <label>Did you have Health Insurance the entire year?</label>
-      <label><input type="radio" name="healthInsuranceAllYear" value="Yes" required /> Yes</label>
-      <label><input type="radio" name="healthInsuranceAllYear" value="No" /> No</label>
-
-      <label>What is your filing status?</label>
-      <input name="filingStatus" placeholder="Single, HOH, Married Filing Joint, etc." required />
-
-      <label>Health Insurance Forms Received:</label>
-      <label><input type="checkbox" name="healthForms1095A" value="1095A" /> 1095A</label>
-      <label><input type="checkbox" name="healthForms1095B" value="1095B" /> 1095B</label>
-
-      <label>Marital Status at end of year:</label>
-      <label><input type="radio" name="maritalStatus" value="Single" required /> Single</label>
-      <label><input type="radio" name="maritalStatus" value="Married" /> Married</label>
-      <label><input type="radio" name="maritalStatus" value="Separated" /> Separated</label>
-      <label><input type="radio" name="maritalStatus" value="Divorce" /> Divorce</label>
-
-      <!-- SPOUSE INFO -->
-      <h3>💍 Spouse Information (If Applicable)</h3>
-      <input name="spouseFirstName" placeholder="Spouse First Name" />
-      <input name="spouseLastName" placeholder="Spouse Last Name" />
-
-      <label>Spouse Date of Birth</label>
-      <input name="spouseDob" type="date" />
-
-      <input name="spouseSsn" placeholder="Spouse Social Security Number" />
-      <input name="spousePhone" placeholder="Spouse Phone Number" />
-      <input name="spouseEmail" placeholder="Spouse Email" />
-
-      <label>Did your Spouse receive a W-2?</label>
-      <label><input type="radio" name="spouseW2" value="Yes" /> Yes</label>
-      <label><input type="radio" name="spouseW2" value="No" /> No</label>
-
-      <label>Do you or your spouse own a home?</label>
-      <label><input type="radio" name="ownHome" value="Yes" /> Yes</label>
-      <label><input type="radio" name="ownHome" value="No" /> No</label>
-
-      <label>Were you First Time Home Buyers?</label>
-      <label><input type="radio" name="firstTimeHomeBuyer" value="Yes" /> Yes</label>
-      <label><input type="radio" name="firstTimeHomeBuyer" value="No" /> No</label>
-
-      <label>Will you claim any dependents?</label>
-      <label><input type="radio" name="claimDependents" value="Yes" /> Yes</label>
-      <label><input type="radio" name="claimDependents" value="No" /> No</label>
-
-      <label>Have you ever been denied EITC?</label>
-      <label><input type="radio" name="eitcDenied" value="Yes" /> Yes</label>
-      <label><input type="radio" name="eitcDenied" value="No" /> No</label>
-      <label><input type="radio" name="eitcDenied" value="NA" /> N/A</label>
-
-      <!-- DEPENDENTS -->
-      <h3>👶 Dependents</h3>
-
-      <h4>Dependent #1</h4>
-      <input name="dep1FirstName" placeholder="First Name" />
-      <input name="dep1LastName" placeholder="Last Name" />
-      <input name="dep1Relationship" placeholder="Relationship" />
-      <label>Date of Birth</label>
-      <input name="dep1Dob" type="date" />
-      <input name="dep1Ssn" placeholder="Social Security Number" />
-
-      <h4>Dependent #2</h4>
-      <input name="dep2FirstName" placeholder="First Name" />
-      <input name="dep2LastName" placeholder="Last Name" />
-      <input name="dep2Relationship" placeholder="Relationship" />
-      <label>Date of Birth</label>
-      <input name="dep2Dob" type="date" />
-      <input name="dep2Ssn" placeholder="Social Security Number" />
-
-      <h4>Dependent #3</h4>
-      <input name="dep3FirstName" placeholder="First Name" />
-      <input name="dep3LastName" placeholder="Last Name" />
-      <input name="dep3Relationship" placeholder="Relationship" />
-      <label>Date of Birth</label>
-      <input name="dep3Dob" type="date" />
-      <input name="dep3Ssn" placeholder="Social Security Number" />
-
-      <label>Can any dependents be claimed by someone else?</label>
-      <label><input type="radio" name="dependentsClaimedElsewhere" value="Yes" /> Yes</label>
-      <label><input type="radio" name="dependentsClaimedElsewhere" value="No" /> No</label>
-
-      <label>If yes, which dependent?</label>
-      <input name="whichDependentClaimedElsewhere" placeholder="Dependent name(s)" />
-
-      <label>Did you pay daycare expenses?</label>
-      <label><input type="radio" name="daycareExpenses" value="Yes" /> Yes</label>
-      <label><input type="radio" name="daycareExpenses" value="No" /> No</label>
-
-      <label>Which dependent?</label>
-      <input name="daycareDependent" placeholder="Dependent name" />
-
-      <label>Did you receive Child Tax Credit Advance Payments?</label>
-      <label><input type="radio" name="ctcAdvance" value="Yes" /> Yes</label>
-      <label><input type="radio" name="ctcAdvance" value="No" /> No</label>
-
-      <label>Total CTC Advance Amount</label>
-      <input name="ctcAdvanceAmount" placeholder="Total amount" />
-
-      <!-- BUSINESS / SELF-EMPLOYMENT -->
-      <h3>💼 Business Owner / Self-Employment</h3>
-
-      <label>Did you or spouse receive a 1099?</label>
-      <label><input type="radio" name="received1099" value="Yes" /> Yes</label>
-      <label><input type="radio" name="received1099" value="No" /> No</label>
-
-      <label>Did you incur business expenses?</label>
-      <label><input type="radio" name="businessExpenses" value="Yes" /> Yes</label>
-      <label><input type="radio" name="businessExpenses" value="No" /> No</label>
-
-      <label>Did anyone attend college this year?</label>
-      <label><input type="radio" name="collegeAttendance" value="Yes" /> Yes</label>
-      <label><input type="radio" name="collegeAttendance" value="No" /> No</label>
-
-      <label>Who attended?</label>
-      <input name="whoAttendedCollege" placeholder="Name(s)" />
-
-      <label>Did they receive a 1098T?</label>
-      <label><input type="radio" name="received1098T" value="Yes" /> Yes</label>
-      <label><input type="radio" name="received1098T" value="No" /> No</label>
-
-      <label>Stimulus Payments Received:</label>
-      <label><input type="checkbox" name="stimulusRound1" value="Round1" /> Round 1</label>
-      <label><input type="checkbox" name="stimulusRound2" value="Round2" /> Round 2</label>
-      <label><input type="checkbox" name="stimulusRound3" value="Round3" /> Round 3</label>
-      <label><input type="checkbox" name="stimulusNone" value="None" /> None</label>
-
-      <label>Do you owe any of the following?</label>
-      <label><input type="checkbox" name="oweBackTaxes" value="BackTaxes" /> Back Taxes</label>
-      <label><input type="checkbox" name="oweChildSupport" value="ChildSupport" /> Child Support</label>
-      <label><input type="checkbox" name="oweStudentLoans" value="StudentLoans" /> Student Loans</label>
-      <label><input type="checkbox" name="oweAlimony" value="Alimony" /> Alimony</label>
-      <label><input type="checkbox" name="oweNone" value="None" /> None</label>
-
-      <label>How would you like to pay for services?</label>
-      <label><input type="radio" name="payForServices" value="RefundDeduct" /> Deduct from refund</label>
-      <label><input type="radio" name="payForServices" value="Upfront" /> Pay upfront</label>
-
-      <label>Refund Method</label>
-      <label><input type="radio" name="refundMethod" value="DirectDeposit" /> Direct Deposit</label>
-      <label><input type="radio" name="refundMethod" value="PrepaidCard" /> Prepaid Card</label>
-      <label><input type="radio" name="refundMethod" value="Check" /> Check</label>
-
-      <label>Interested in Cash Advance?</label>
-      <label><input type="radio" name="cashAdvance" value="Yes" /> Yes</label>
-      <label><input type="radio" name="cashAdvance" value="No" /> No</label>
-
-      <!-- BANK INFO -->
-      <h3>🏦 Bank Information</h3>
-      <input name="bankName" placeholder="Name of Bank" />
-
-      <label>Account Type</label>
-      <label><input type="radio" name="bankAccountType" value="Checking" /> Checking</label>
-      <label><input type="radio" name="bankAccountType" value="Savings" /> Savings</label>
-
-      <input name="bankRoutingNumber"
+</body>
+</html>
