@@ -23,17 +23,14 @@
     border-bottom: 3px solid gold;
   }
 
-  /* Logo Slot */
+  /* Logo */
   .st-logo {
     width: 70px;
     height: 70px;
-    border: 2px dashed #0a1a3c;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    color: #0a1a3c;
-    background: #e6e6e6;
+    background-image: url('st-logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   nav a {
@@ -114,13 +111,25 @@
     background: #0a1a3c;
     color: white;
   }
+
+  footer img {
+    width: 180px;
+    border-radius: 12px;
+    margin-top: 20px;
+  }
+
+  .note {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+  }
 </style>
 </head>
 
 <body>
 
 <header class="topbar">
-  <div class="st-logo">Logo</div>
+  <div class="st-logo"></div>
 
   <nav>
     <a href="index.html">Home</a>
@@ -134,11 +143,16 @@
   <section class="card">
     <h2>Client Intake Form</h2>
     <p>
-      WELCOME AND THANK YOU FOR CHOOSING SOLIDIFIED TAX GROUP.  
+      WELCOME AND THANK YOU FOR CHOOSING SOLIDIFIED TAX GROUP.<br>
       PLEASE FILL OUT THIS FORM SO WE CAN BETTER ASSIST YOU WITH FILING YOUR TAXES.
     </p>
+    <p class="note">
+      Your answers are automatically saved on this device. When you are finished, tap
+      <strong>“Send My Intake Form”</strong> to email your responses directly to
+      <strong>solidifiedtaxgroup@gmail.com</strong>.
+    </p>
 
-    <form id="intakeForm" method="POST" action="/api/client/intake" enctype="multipart/form-data">
+    <form id="intakeForm">
 
       <!-- TAXPAYER INFO -->
       <h3>👤 Taxpayer Information</h3>
@@ -373,4 +387,145 @@
       <div class="radio-group">
         <label><input type="radio" name="refundMethod" value="DirectDeposit" /> Direct Deposit</label>
         <label><input type="radio" name="refundMethod" value="PrepaidCard" /> Prepaid Card</label>
-        <label><input type="radio" name="refundMethod" value="Check" /> Check
+        <label><input type="radio" name="refundMethod" value="Check" /> Check</label>
+      </div>
+
+      <label>Are you interested in a Cash Advance?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="cashAdvance" value="Yes" /> Yes</label>
+        <label><input type="radio" name="cashAdvance" value="No" /> No</label>
+      </div>
+
+      <!-- BANK INFO -->
+      <h3>🏦 Bank Information</h3>
+      <input name="bankName" placeholder="Name of Bank" />
+
+      <label>Account Type</label>
+      <div class="radio-group">
+        <label><input type="radio" name="bankAccountType" value="Checking" /> Checking</label>
+        <label><input type="radio" name="bankAccountType" value="Savings" /> Savings</label>
+      </div>
+
+      <input name="bankRoutingNumber" placeholder="Routing Number" />
+      <input name="bankAccountNumber" placeholder="Account Number" />
+
+      <!-- SUBMIT / EMAIL BUTTON -->
+      <button type="button" class="btn" onclick="sendIntakeEmail()">
+        Send My Intake Form
+      </button>
+
+      <p class="note">
+        When you tap this button, your email app will open with your answers filled in.
+        Review them and tap Send to complete your intake.
+      </p>
+
+    </form>
+  </section>
+</main>
+
+<footer>
+  <h3>Solidified Tax Group</h3>
+  <p>470‑430‑3063 • solidifiedtaxgroup@gmail.com</p>
+  <img src="bottom-photo.jpg" alt="Tax Professional">
+</footer>
+
+<script>
+  const FORM_STORAGE_KEY = 'solidified_tax_intake_form';
+
+  function saveFormToLocalStorage() {
+    const form = document.getElementById('intakeForm');
+    const data = {};
+    const elements = form.elements;
+
+    for (let i = 0; i < elements.length; i++) {
+      const el = elements[i];
+      if (!el.name) continue;
+
+      if (el.type === 'radio') {
+        if (el.checked) {
+          data[el.name] = el.value;
+        } else if (!(el.name in data)) {
+          data[el.name] = '';
+        }
+      } else if (el.type === 'checkbox') {
+        if (!data[el.name]) data[el.name] = [];
+        if (el.checked) {
+          if (!data[el.name].includes(el.value)) {
+            data[el.name].push(el.value);
+          }
+        }
+      } else {
+        data[el.name] = el.value;
+      }
+    }
+
+    localStorage.setItem(FORM_STORAGE_KEY, JSON.stringify(data));
+  }
+
+  function loadFormFromLocalStorage() {
+    const saved = localStorage.getItem(FORM_STORAGE_KEY);
+    if (!saved) return;
+
+    const data = JSON.parse(saved);
+    const form = document.getElementById('intakeForm');
+    const elements = form.elements;
+
+    for (let i = 0; i < elements.length; i++) {
+      const el = elements[i];
+      if (!el.name || !(el.name in data)) continue;
+
+      if (el.type === 'radio') {
+        el.checked = (data[el.name] === el.value);
+      } else if (el.type === 'checkbox') {
+        const val = data[el.name];
+        if (Array.isArray(val)) {
+          el.checked = val.includes(el.value);
+        } else {
+          el.checked = (val === el.value);
+        }
+      } else {
+        el.value = data[el.name];
+      }
+    }
+  }
+
+  function sendIntakeEmail() {
+    const form = document.getElementById('intakeForm');
+    const elements = form.elements;
+    let bodyLines = [];
+
+    for (let i = 0; i < elements.length; i++) {
+      const el = elements[i];
+      if (!el.name) continue;
+
+      if (el.type === 'radio') {
+        if (el.checked) {
+          bodyLines.push(el.name + ': ' + el.value);
+        }
+      } else if (el.type === 'checkbox') {
+        if (el.checked) {
+          bodyLines.push(el.name + ': ' + el.value);
+        }
+      } else {
+        if (el.value && el.type !== 'button' && el.type !== 'submit') {
+          bodyLines.push(el.name + ': ' + el.value);
+        }
+      }
+    }
+
+    const body = encodeURIComponent(bodyLines.join('\n'));
+    const subject = encodeURIComponent('tax intake for from client');
+    const mailto = 'mailto:solidifiedtaxgroup@gmail.com?subject=' + subject + '&body=' + body;
+
+    window.location.href = mailto;
+  }
+
+  window.addEventListener('load', function() {
+    loadFormFromLocalStorage();
+    const form = document.getElementById('intakeForm');
+    form.addEventListener('input', saveFormToLocalStorage);
+  });
+</script>
+
+</body>
+</html>
