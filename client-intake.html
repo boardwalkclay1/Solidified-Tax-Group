@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Client Intake – Solidified Tax Group</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: #f7f9fc;
+    color: #0a1a3c;
+  }
+
+  /* Top Bar */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 15px 25px;
+    border-bottom: 3px solid gold;
+  }
+
+  /* Logo Slot */
+  .st-logo {
+    width: 70px;
+    height: 70px;
+    border: 2px dashed #0a1a3c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #0a1a3c;
+    background: #e6e6e6;
+  }
+
+  nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #0a1a3c;
+    font-weight: 600;
+  }
+
+  nav a:hover {
+    color: gold;
+  }
+
+  /* Page Container */
+  .page {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px 20px;
+  }
+
+  .card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  h2, h3 {
+    color: #0a1a3c;
+    border-left: 6px solid gold;
+    padding-left: 10px;
+  }
+
+  h4 {
+    margin-top: 20px;
+    color: #0a1a3c;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 18px 0;
+    border: 1px solid #c7c7c7;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+
+  label {
+    font-weight: 600;
+    display: block;
+    margin-top: 10px;
+  }
+
+  .btn {
+    background: #0a1a3c;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  .btn:hover {
+    background: gold;
+    color: #0a1a3c;
+  }
+
+  .radio-group, .checkbox-group {
+    margin-bottom: 20px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 60px;
+    background: #0a1a3c;
+    color: white;
+  }
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="st-logo">Logo</div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="client.html">Client Portal</a>
+    <a href="client-intake.html">Client Intake</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="page">
+  <section class="card">
+    <h2>Client Intake Form</h2>
+    <p>
+      WELCOME AND THANK YOU FOR CHOOSING SOLIDIFIED TAX GROUP.  
+      PLEASE FILL OUT THIS FORM SO WE CAN BETTER ASSIST YOU WITH FILING YOUR TAXES.
+    </p>
+
+    <form id="intakeForm" method="POST" action="/api/client/intake" enctype="multipart/form-data">
+
+      <!-- TAXPAYER INFO -->
+      <h3>👤 Taxpayer Information</h3>
+      <input name="taxpayerFirstName" placeholder="First Name" required />
+      <input name="taxpayerLastName" placeholder="Last Name" required />
+
+      <h4>Address</h4>
+      <input name="addressStreet1" placeholder="Street Address" required />
+      <input name="addressStreet2" placeholder="Street Address Line 2" />
+      <input name="addressCity" placeholder="City" required />
+      <input name="addressState" placeholder="State / Province" required />
+      <input name="addressZip" placeholder="Postal / Zip Code" required />
+
+      <input name="phone" placeholder="Phone Number" required />
+      <input name="email" type="email" placeholder="Email" required />
+
+      <label>Date Of Birth</label>
+      <input name="dob" type="date" required />
+
+      <input name="ssn" placeholder="Social Security Number" required />
+
+      <label>What year are you requesting to file?</label>
+      <input name="taxYear" placeholder="Tax Year" required />
+
+      <!-- YES / NO QUESTIONS -->
+      <h3>📄 Income & Filing Details</h3>
+
+      <label>Did you receive a W-2?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="w2Received" value="Yes" required /> Yes</label>
+        <label><input type="radio" name="w2Received" value="No" /> No</label>
+      </div>
+
+      <label>Did you or your spouse receive Unemployment Compensation? (Form 1099-G)</label>
+      <div class="radio-group">
+        <label><input type="radio" name="unemployment" value="Yes" required /> Yes</label>
+        <label><input type="radio" name="unemployment" value="No" /> No</label>
+      </div>
+
+      <label>Did you or your spouse collect Social Security or Retirement Income?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="ssOrRetirement" value="Yes" required /> Yes</label>
+        <label><input type="radio" name="ssOrRetirement" value="No" /> No</label>
+      </div>
+
+      <label>Did you or your spouse take an early withdrawal from your retirement account? (Form 1099-R)</label>
+      <div class="radio-group">
+        <label><input type="radio" name="earlyRetirementWithdrawal" value="Yes" required /> Yes</label>
+        <label><input type="radio" name="earlyRetirementWithdrawal" value="No" /> No</label>
+      </div>
+
+      <label>Did you pay more than half of the expenses at your residence for the entire year?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="paidHalfExpenses" value="Yes" required /> Yes</label>
+        <label><input type="radio" name="paidHalfExpenses" value="No" /> No</label>
+      </div>
+
+      <label>Did you have Health Insurance the entire year?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="healthInsuranceAllYear" value="Yes" required /> Yes</label>
+        <label><input type="radio" name="healthInsuranceAllYear" value="No" /> No</label>
+      </div>
+
+      <label>What is your filing status?</label>
+      <input name="filingStatus" placeholder="Single, HOH, Married Filing Joint, etc." required />
+
+      <label>Did you receive any of the forms listed below regarding your Health Insurance?</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="healthForms1095A" value="1095A" /> 1095A (Marketplace)</label><br />
+        <label><input type="checkbox" name="healthForms1095B" value="1095B" /> 1095B (Employer)</label>
+      </div>
+
+      <label>What was your marital status at the end of the year?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="maritalStatus" value="Single" required /> Single</label>
+        <label><input type="radio" name="maritalStatus" value="Married" /> Married</label>
+        <label><input type="radio" name="maritalStatus" value="Separated" /> Separated</label>
+        <label><input type="radio" name="maritalStatus" value="Divorce" /> Divorce</label>
+      </div>
+
+      <!-- SPOUSE INFO -->
+      <h3>💍 Spouse Information (If Applicable)</h3>
+      <input name="spouseFirstName" placeholder="Spouse First Name" />
+      <input name="spouseLastName" placeholder="Spouse Last Name" />
+
+      <label>Spouse Date of Birth</label>
+      <input name="spouseDob" type="date" />
+
+      <input name="spouseSsn" placeholder="Spouse Social Security Number" />
+      <input name="spousePhone" placeholder="Spouse Phone Number" />
+      <input name="spouseEmail" placeholder="Spouse Email" />
+
+      <label>Did your Spouse receive a W-2?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="spouseW2" value="Yes" /> Yes</label>
+        <label><input type="radio" name="spouseW2" value="No" /> No</label>
+      </div>
+
+      <label>Do you or your spouse own a home?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="ownHome" value="Yes" /> Yes</label>
+        <label><input type="radio" name="ownHome" value="No" /> No</label>
+      </div>
+
+      <label>Were you or your spouse First Time Home Buyers this year?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="firstTimeHomeBuyer" value="Yes" /> Yes</label>
+        <label><input type="radio" name="firstTimeHomeBuyer" value="No" /> No</label>
+      </div>
+
+      <label>Will you claim any dependents whom lived with you or whom you supported for more than 6 months this year?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="claimDependents" value="Yes" /> Yes</label>
+        <label><input type="radio" name="claimDependents" value="No" /> No</label>
+      </div>
+
+      <label>Have you ever been denied the Earned Income Tax Credit (EITC)?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="eitcDenied" value="Yes" /> Yes</label>
+        <label><input type="radio" name="eitcDenied" value="No" /> No</label>
+        <label><input type="radio" name="eitcDenied" value="NA" /> N/A</label>
+      </div>
+
+      <!-- DEPENDENTS -->
+      <h3>👶 Dependents</h3>
+
+      <h4>Dependent #1</h4>
+      <input name="dep1FirstName" placeholder="First Name" />
+      <input name="dep1LastName" placeholder="Last Name" />
+      <input name="dep1Relationship" placeholder="Relationship" />
+      <label>Date of Birth</label>
+      <input name="dep1Dob" type="date" />
+      <input name="dep1Ssn" placeholder="Social Security Number" />
+
+      <h4>Dependent #2</h4>
+      <input name="dep2FirstName" placeholder="First Name" />
+      <input name="dep2LastName" placeholder="Last Name" />
+      <input name="dep2Relationship" placeholder="Relationship" />
+      <label>Date of Birth</label>
+      <input name="dep2Dob" type="date" />
+      <input name="dep2Ssn" placeholder="Social Security Number" />
+
+      <h4>Dependent #3</h4>
+      <input name="dep3FirstName" placeholder="First Name" />
+      <input name="dep3LastName" placeholder="Last Name" />
+      <input name="dep3Relationship" placeholder="Relationship" />
+      <label>Date of Birth</label>
+      <input name="dep3Dob" type="date" />
+      <input name="dep3Ssn" placeholder="Social Security Number" />
+
+      <label>Can you or any dependents be claimed by anyone else?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="dependentsClaimedElsewhere" value="Yes" /> Yes</label>
+        <label><input type="radio" name="dependentsClaimedElsewhere" value="No" /> No</label>
+      </div>
+
+      <label>If yes, which dependent can be claimed by someone else?</label>
+      <input name="whichDependentClaimedElsewhere" placeholder="Dependent name(s)" />
+
+      <label>Did you or your spouse pay any daycare expenses this year?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="daycareExpenses" value="Yes" /> Yes</label>
+        <label><input type="radio" name="daycareExpenses" value="No" /> No</label>
+      </div>
+
+      <label>Which dependent did you pay daycare for?</label>
+      <input name="daycareDependent" placeholder="Dependent name" />
+
+      <label>Did you receive any Child Tax Credit Advance Payments?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="ctcAdvance" value="Yes" /> Yes</label>
+        <label><input type="radio" name="ctcAdvance" value="No" /> No</label>
+      </div>
+
+      <label>How much did you receive total?</label>
+      <input name="ctcAdvanceAmount" placeholder="Total amount" />
+
+      <!-- BUSINESS / SELF-EMPLOYMENT -->
+      <h3>💼 Business Owner / Self-Employment</h3>
+
+      <label>Did you or your spouse receive a 1099 Form?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="received1099" value="Yes" /> Yes</label>
+        <label><input type="radio" name="received1099" value="No" /> No</label>
+      </div>
+
+      <label>Did you or your spouse incur business expenses?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="businessExpenses" value="Yes" /> Yes</label>
+        <label><input type="radio" name="businessExpenses" value="No" /> No</label>
+      </div>
+
+      <label>Did you, your spouse, or a dependent attend college this year?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="collegeAttendance" value="Yes" /> Yes</label>
+        <label><input type="radio" name="collegeAttendance" value="No" /> No</label>
+      </div>
+
+      <label>Who attended college?</label>
+      <input name="whoAttendedCollege" placeholder="Name(s)" />
+
+      <label>Did this person receive a 1098T?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="received1098T" value="Yes" /> Yes</label>
+        <label><input type="radio" name="received1098T" value="No" /> No</label>
+      </div>
+
+      <label>Did you receive your Economic Stimulus payments?</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="stimulusRound1" value="Round1" /> Round 1</label>
+        <label><input type="checkbox" name="stimulusRound2" value="Round2" /> Round 2</label>
+        <label><input type="checkbox" name="stimulusRound3" value="Round3" /> Round 3</label>
+        <label><input type="checkbox" name="stimulusNone" value="None" /> None</label>
+      </div>
+
+      <label>Do you or your spouse owe any of the following?</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="oweBackTaxes" value="BackTaxes" /> Back Taxes</label>
+        <label><input type="checkbox" name="oweChildSupport" value="ChildSupport" /> Child Support</label>
+        <label><input type="checkbox" name="oweStudentLoans" value="StudentLoans" /> Student Loans</label>
+        <label><input type="checkbox" name="oweAlimony" value="Alimony" /> Alimony</label>
+        <label><input type="checkbox" name="oweNone" value="None" /> None</label>
+      </div>
+
+      <label>How would you like to pay for your Tax Services?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="payForServices" value="RefundDeduct" /> Deduct from refund</label>
+        <label><input type="radio" name="payForServices" value="Upfront" /> Pay upfront</label>
+      </div>
+
+      <label>How will you receive your refund?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="refundMethod" value="DirectDeposit" /> Direct Deposit</label>
+        <label><input type="radio" name="refundMethod" value="PrepaidCard" /> Prepaid Card</label>
+        <label><input type="radio" name="refundMethod" value="Check" /> Check
